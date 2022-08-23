@@ -1,5 +1,54 @@
 #!/bin/bash
 
+
+
+deactivate
+. check_deps.sh > output.txt
+
+
+clear
+
+echo "**********************************"
+echo "* U.C. Berkeley MIDS W255        *"
+echo "* Summer 2022                    *"
+echo "* Student: Don Irwin             *"
+echo "**********************************"
+
+echo "**********************************"
+echo "* CHECKING ALL DEPENDENCIES      *"
+echo "* Python Virtual Environments    *"
+echo "* Npm                            *"
+echo "**********************************"
+
+
+  if [ "$all_dependencies" -ne 1 ]; then
+
+        echo "**********************************"
+        echo "* Not all depdencies were met    *"
+        echo "* Please install dependencies    *"
+        echo "* and try again.                 *"
+        echo "**********************************"
+
+
+        if [ "$python_venv" -ne 0 ]; then
+            echo "Python Virtual Environments are not installed."
+            export all_dependencies=0
+        fi
+
+        if [ "$npm_present" -ne 0 ]; then
+            echo "NPM is not present."
+            echo "Visit the NPM install site:"
+            echo "https://docs.npmjs.com/downloading-and-installing-node-js-and-npm"
+            export all_dependencies=0
+        fi
+
+
+        echo "**********************************"
+        echo "**********************************"
+        return
+  fi
+
+
 #Set Up the Virtual Environment
 #dependencies
 . setup_env_dep.sh
