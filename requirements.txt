@@ -18,8 +18,10 @@ MarkupSafe==1.1.1
 matplotlib==3.3.2
 mccabe==0.6.1
 networkx==2.5
-numpy==1.18.1
-pandas==1.1.4
+#numpy==1.18.1
+numpy
+#pandas==1.1.4
+pandas
 Pillow==8.0.1
 pycodestyle==2.6.0
 pylint==2.6.0
@@ -31,7 +33,9 @@ scipy
 six==1.15.0
 #TBB==0.1
 toml==0.10.2
-typed-ast==1.4.1
+#typed-ast==1.4.1
+typed-ast
 Werkzeug==1.0.1
 wrapt==1.12.1
-xlrd==1.2.0
+#xlrd==1.2.0
+xlrd
