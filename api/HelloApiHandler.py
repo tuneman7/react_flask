@@ -4,7 +4,7 @@ class HelloApiHandler(Resource):
   def get(self):
     return {
       'resultStatus': 'SUCCESS',
-      'message': "Hello Api Handler"
+      'message': "Hello Api Handler Don's Test"
       }
 
   def post(self):
