@@ -188,3 +188,8 @@ deactivate
 
 . check_listeners.sh
 
+echo -ne '\n' | echo "*********************************"
+echo "*                               *"
+echo "*  PROGRAM COMPLETE             *"
+echo "*                               *"
+echo "*********************************"
