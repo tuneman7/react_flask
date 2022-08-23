@@ -26,6 +26,33 @@ sudo kill ${pid_to_kill}
 
 cd ./../
 
+
+echo "*********************************"
+echo "*                               *"
+echo "*        WAITING. ....          *"
+echo "*        REACT not ready        *"
+echo "*                               *"
+echo "*********************************"
+
+
+finished=false
+while ! $finished; do
+    health_status=$(curl -o /dev/null -s -w "%{http_code}\n" -X GET "http://127.0.0.1:3000")
+    if [ $health_status == "200" ]; then
+        finished=true
+        echo "*********************************"
+        echo "*                               *"
+        echo "*        REACT is ready         *"
+        echo "*                               *"
+        echo "*********************************"
+    else
+        finished=false
+    fi
+done
+echo""
+echo""
+
+
 echo "*********************************"
 echo "*  KILLING ANY PROCESS          *"
 echo "*  Using Port 5000              *"
