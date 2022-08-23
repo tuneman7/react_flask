@@ -8,6 +8,6 @@ rm -rf public
 rm -rf src
 npx create-react-app .
 npm install axios
-mv -f ./../App.js ./src/
+cp -f ./../App.js ./src/
 cd ./../
 

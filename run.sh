@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 #Set Up the Virtual Environment
 #dependencies
@@ -6,15 +6,19 @@
 . setup_venv.sh
 
 #Now create the front-end
+rm -rf frontend
+mkdir frontend
 . create_react_app.sh
 
 cd ./frontend
-npm run build
-npm start & >npm_output.txt
+cp ./../npm_build.sh ./
+
+. npm_build.sh & > npm_output.txt
+
 
 cd ./../
 
-run flask & >flask_output.txt
+flask run & > flask_output.txt
 
 echo "*********************************"
 echo "*                               *"
