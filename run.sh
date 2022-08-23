@@ -115,6 +115,8 @@ sudo kill ${pid_to_kill}
 
 . npm_build.sh & > npm_output.txt
 
+react_pid=$!
+
 
 cd ./../
 
@@ -180,13 +182,9 @@ pid_to_kill=$(lsof -t -i :3000 -s TCP:LISTEN)
 
 sudo kill ${pid_to_kill}
 
+sudo kill -INT "$react_pid"
+
 deactivate
 
 . check_listeners.sh
 
-echo "*********************************"
-echo "Look at pids using 3000 or 5000 with listeners"
-echo "*********************************"
-
-lsof -t -i :5000 -s TCP:LISTEN
-lsof -t -i :5000 -s TCP:LISTEN
