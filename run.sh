@@ -144,6 +144,20 @@ echo""
 echo""
 
 
+echo "*********************************"
+echo "*                               *"
+echo "*  Flask Site Available at:     *"
+echo "*  http://127.0.0.1:5000        *"
+echo "*                               *"
+echo "*********************************"
+
+
+echo "*********************************"
+echo "*                               *"
+echo "*        Press Enter to         *"
+echo "*        End Application        *"
+echo "*********************************"
+
 read -p "Press Enter to Terminate Application:" 
 
 echo "*********************************"
@@ -167,3 +181,4 @@ pid_to_kill=$(lsof -t -i :3000 -s TCP:LISTEN)
 sudo kill ${pid_to_kill}
 
 deactivate
+
