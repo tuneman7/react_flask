@@ -54,6 +54,47 @@ echo "**********************************"
 . setup_env_dep.sh
 . setup_venv.sh
 
+
+
+echo "*********************************"
+echo "*  KILLING ANY PROCESS          *"
+echo "*  Using Port 5000              *"
+echo "*                               *"
+echo "*********************************"
+
+pid_to_kill=$(lsof -t -i :5000 -s TCP:LISTEN)
+
+sudo kill ${pid_to_kill}
+
+flask run & > flask_output.txt
+
+echo "*********************************"
+echo "*                               *"
+echo "*        WAITING. ....          *"
+echo "*        API not ready          *"
+echo "*                               *"
+echo "*********************************"
+
+
+finished=false
+while ! $finished; do
+    health_status=$(curl -o /dev/null -s -w "%{http_code}\n" -X GET "http://127.0.0.1:5000/flask/hello")
+    if [ $health_status == "200" ]; then
+        finished=true
+        echo "*********************************"
+        echo "*                               *"
+        echo "*        API is ready           *"
+        echo "*                               *"
+        echo "*********************************"
+    else
+        finished=false
+    fi
+done
+echo""
+echo""
+
+
+
 #Now create the front-end
 rm -rf frontend
 mkdir frontend
@@ -93,45 +134,6 @@ while ! $finished; do
         echo "*********************************"
         echo "*                               *"
         echo "*        react is ready         *"
-        echo "*                               *"
-        echo "*********************************"
-    else
-        finished=false
-    fi
-done
-echo""
-echo""
-
-
-
-echo "*********************************"
-echo "*  KILLING ANY PROCESS          *"
-echo "*  Using Port 5000              *"
-echo "*                               *"
-echo "*********************************"
-
-pid_to_kill=$(lsof -t -i :5000 -s TCP:LISTEN)
-
-sudo kill ${pid_to_kill}
-
-flask run & > flask_output.txt
-
-echo "*********************************"
-echo "*                               *"
-echo "*        WAITING. ....          *"
-echo "*        API not ready          *"
-echo "*                               *"
-echo "*********************************"
-
-
-finished=false
-while ! $finished; do
-    health_status=$(curl -o /dev/null -s -w "%{http_code}\n" -X GET "http://127.0.0.1:5000/flask/hello")
-    if [ $health_status == "200" ]; then
-        finished=true
-        echo "*********************************"
-        echo "*                               *"
-        echo "*        API is ready           *"
         echo "*                               *"
         echo "*********************************"
     else
