@@ -66,7 +66,7 @@ pid_to_kill=$(lsof -t -i :5000 -s TCP:LISTEN)
 
 sudo kill ${pid_to_kill}
 
-flask run & > flask_output.txt
+flask run --debugger & > flask_output.txt
 
 echo "*********************************"
 echo "*                               *"
