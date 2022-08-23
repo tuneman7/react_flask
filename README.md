@@ -7,3 +7,13 @@
 git clone https://github.com/tuneman7/react_flask  && cd react_flask && . run.sh  
 ```  
 
+Make sure that we have the latest versions of Cuda working. ...
+
+```
+
+npm cache clean -f 
+sudo npm install -g n
+sudo n latest 
+
+```
+
