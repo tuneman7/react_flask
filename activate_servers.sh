@@ -63,7 +63,7 @@ pid_to_kill=$(lsof -t -i :5000 -s TCP:LISTEN)
 
 sudo kill ${pid_to_kill}
 
-flask run & > flask_output.txt
+flask run --debugger & > flask_output.txt
 
 echo "*********************************"
 echo "*                               *"
@@ -90,6 +90,19 @@ done
 echo""
 echo""
 
+echo "*********************************"
+echo "*                               *"
+echo "*  Flask Site Available at:     *"
+echo "*  http://127.0.0.1:5000        *"
+echo "*                               *"
+echo "*********************************"
+
+
+echo "*********************************"
+echo "*                               *"
+echo "*        Press Enter to         *"
+echo "*        End Application        *"
+echo "*********************************"
 
 read -p "Press Enter to Terminate Application:" 
 
@@ -113,4 +126,14 @@ pid_to_kill=$(lsof -t -i :3000 -s TCP:LISTEN)
 
 sudo kill ${pid_to_kill}
 
+sudo kill -INT "$react_pid"
+
 deactivate
+
+. check_listeners.sh
+
+echo -ne '\n' | echo "*********************************"
+echo "*                               *"
+echo "*  PROGRAM COMPLETE             *"
+echo "*                               *"
+echo "*********************************"
