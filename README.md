@@ -7,7 +7,7 @@
 git clone https://github.com/tuneman7/react_flask  && cd react_flask && . run.sh  
 ```  
 
-Make sure that we have the latest versions of Cuda working. ...
+Make sure we have the latest version of Node JS as well as NPM on tap
 
 ```
 
