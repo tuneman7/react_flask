@@ -1,6 +1,6 @@
 # react_flask
-# https://github.com/QuentinWatt/React-for-beginners-tutorial-series
-# 
+### https://github.com/QuentinWatt/React-for-beginners-tutorial-series
+### https://towardsdatascience.com/build-deploy-a-react-flask-app-47a89a5d17d9 
 
 
 ```
